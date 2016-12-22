@@ -41,13 +41,75 @@ $("#call-zup").click(function(evt) {
 });
 
 
+$("#get-serialnum").click(function(evt) {
 
+    fabmo.getNetworkIdentity(function(err, data) {
+      if (err) {
+        console.info('Network not reachable');
+        return
+      }
+      if(data.id) {
+//        $('#input-machine-name').val(data.name);
+console.log('name', data.name);
+    document.getElementById("demo").innerHTML = data.name;
+  //jQuery('#qrcode').qrcode("this plugin is great");
+  jQuery('#qrcodeTable').qrcode({
+    render  : "table",
+    text  : data.name
+  }); 
+//  jQuery('#qrcodeCanvas').qrcode({
+//    text  : data.name
+//  }); 
+
+
+//        $('#section-machine-name').show();
+      } else {
+//        $('#section-machine-name').hide();
+      }
+
+      if(data.id) {
+  //      $('#input-machine-id').val(data.id);
+ //       $('#section-machine-id').show();
+      } else {
+//        $('#section-machine-id').hide();
+      }
+    });
+
+
+
+
+})
 
 
 //$("#call-pull-keypad").click(function(evt) {
 //  fabmo.notify('info', 'Heads Up! How extensive can this message be??');
 //});
 
+function postToGoogle(){
+    //var name = $j('#name').val();
+    var date = "5/5/15";
+    var custID = "TH222222";
+    var cust_name = "Ted Hall";
+    var cust_loc = "Durham, NC";
+    var ser_num = "test3333333";
+    //var ser_num = $('#demo');
+    //if ((name !== "") && (email !== "") && ((feed !== ""))) {
+        $.ajax({
+            url: "https://docs.google.com/spreadsheets/d/1NaIC9WgteQYMHhsBIw_nzC8EzxOaf9f6QwQ9Jcql6uk/formResponse",
+            data: {"entry.1" : date, "entry.2" : custID, "entry.3" : cust_name, "entry.4": cust_loc, "entry.5": ser_num},
+            type: "POST",
+            dataType: "xml",
+        });
+    console.log("posted");
+    //}
+    //else {
+        //Error message
+    //}
+};
+
+$("#post-rec").click(function(evt) {
+  postToGoogle();
+});
 
 
 

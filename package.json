@@ -1,13 +1,13 @@
 {
-  "name": "Quick Launch",
+  "name": "Handibot_Production",
   "main": "./index.html",
   "icon": "icon.png",
-  "icon_color": "green",
-  "version": "1.0.6",
+  "icon_color": "yellow",
+  "version": "1.0.0",
   "author": "Ted Hall + Ryan Sturmer",
   "website": "http://www.handibot.com",
-  "description": "Running a first file with your Handibot ...",
-  "id": "fabmo-quick-launch",
+  "description": "Factory tests ...",
+  "id": "fabmo-productionapp",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-zip": "^0.17.1"

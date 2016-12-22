@@ -17,6 +17,10 @@
     <script src="js/lib/jquery.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
     <script src="js/lib/fabmo.js"></script>
+ 
+<script type="text/javascript" src="js/lib/jquery.qrcode.js"></script>
+<script type="text/javascript" src="js/lib/qrcode.js"></script>
+  	
   	<script type="text/javascript">
   		var fabmo = new FabMoDashboard();
   	</script>
@@ -28,7 +32,7 @@
         <ul class="nav nav-tabs" role="tablist">
           <li class="active"><a href="#tab-startfire" role="tab" data-toggle="tab"><strong>Quick Launch</strong></a></li>
           <li><a href="#tab-details" role="tab" data-toggle="tab"><strong>Next Steps</strong></a></li>
-          <li><a id="config-tab-link" href="#tab-config" role="tab" data-toggle="tab"><strong>Getting HELP</strong></a></li>
+          <li><a id="serial-tab-link" href="#tab-serialnum" role="tab" data-toggle="tab"><strong>Get-Print SerialNum</strong></a></li>
         </ul>
       </div>
       
@@ -36,9 +40,6 @@
       <div class="tab-content">
         <!-- Launch pane -->
         <div class="tab-pane active" id="tab-startfire">
-
-  
-
 			<div class="jumbotron">
       
 				<p>[These instructions follow-on the "Handibot 2 Manual: Unboxing" document ...]</p>
@@ -161,22 +162,33 @@
             <hr width = "90%" noshade>
             <hr width = "90%" noshade>
       
-
         </div><!-- end Details Pane -->
 
-        <!-- Help Pane -->
-        <div class="tab-pane" id="tab-config">
-          <h2>Additional Help Resources</h2>
-            <p><strong>[*these resources require an internet connection]</strong></p>
-            <p>Handibots are a new kind of power tool. They are intrinsically safer than manual power tools. But please read the safety information to understand the precautions you should observe with these new tools.</p>
-          <h3><a class="btn btn-primary" id="get-safety"> Get Safety Information for Using Handibots </a></h3>
-            <p>The Handibot Manual provides information on getting-started, setting-up, and using your Handibot.</p>
-          <h3><a class="btn btn-primary" id="get-manual"> Get the Handibot Manual </a></h3>
-            <p>Additional resources and help are available on the Handibot User Forum.</p>
-          <h3><a class="btn btn-primary" id="go-forum"> Handibot Forum </a></h3>
+        <!-- SerialNum Pane -->
+        <div class="tab-pane" id="tab-serialnum">
+
+          <h3><a class="btn btn-primary" id="get-serialnum"> CLICK HERE > to get SERIAL NUMBER AND QR CODE </a> </h3>
+
+<input type="button" id ="post-rec" value="Print this Label">
+
+
+
+<h1 id="demo"></h1>
+<p></p>
+<div id="qrcodeTable"></div>
+
+<script>
+//document.getElementById("demo").innerHTML = 5 + 6;
+</script>
+
+
+
+<!--<input type="button" value="Print" onclick="document.getElementById('.container').focus();document.getElementById('.container').print();" />
+-->
+         
           <hr width = "90%" noshade>
           <hr width = "90%" noshade>
-        </div>
+        </div> <!-- END SerialNum Pane -->
       </div> <!-- tab content -->
     </div><!-- container -->
 
