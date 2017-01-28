@@ -46,7 +46,7 @@ $("#get-serialnum").click(function(evt) {
     fabmo.getNetworkIdentity(function(err, data) {
       if (err) {
         console.info('Network not reachable');
-        return
+        return;
       }
       if(data.id) {
 //        $('#input-machine-name').val(data.name);
@@ -78,7 +78,7 @@ console.log('name', data.name);
 
 
 
-})
+});
 
 
 //$("#call-pull-keypad").click(function(evt) {
@@ -105,12 +105,27 @@ function postToGoogle(){
     //else {
         //Error message
     //}
-};
+}
 
 $("#post-rec").click(function(evt) {
-  postToGoogle();
+//  postToGoogle();
 });
 
+$("#print-rec").click(function(evt) {
+//var result = contentWindow.document.execCommand('print', false, null);
+var result = iframe.contentWindow.document.execCommand('print', false, null);
+
+if (!result)
+contentWindow.print();
+
+});
+
+function printFrame(id) {
+            var frm = document.getElementById(id).contentWindow;
+//            frm.focus();
+            frm.print();
+            return false;
+}
 
 
 $("#nav-showdro").click(function(evt) {

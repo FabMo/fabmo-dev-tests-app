@@ -30,7 +30,7 @@
       <!-- Nav tabs -->
       <div class="tabs-container">
         <ul class="nav nav-tabs" role="tablist">
-          <li class="active"><a href="#tab-startfire" role="tab" data-toggle="tab"><strong>First Steps</strong></a></li>
+          <li class="active"><a href="#tab-first" role="tab" data-toggle="tab"><strong>First Steps</strong></a></li>
           <li><a href="#tab-details" role="tab" data-toggle="tab"><strong>Next Steps</strong></a></li>
           <li><a id="serial-tab-link" href="#tab-serialnum" role="tab" data-toggle="tab"><strong>Finish / Get-Print SerialNum</strong></a></li>
         </ul>
@@ -38,7 +38,7 @@
       
 
       <div class="tab-content">
-        <!-- Launch pane -->
+        <!-- First pane -->
         <div class="tab-pane active" id="tab-first">
 			<div class="jumbotron">
 				<p>[This App will lead you through setting up and testing new Handibot prior to shipping.]</p>
@@ -117,7 +117,8 @@
               <hr width = "90%" noshade>
               <p>&nbsp;</p>
             </div>  
-        </div><!-- end Launch Pane -->
+        </div><!-- end First Pane -->
+
 
         <!-- Details Pane -->
         <div class="tab-pane" id="tab-details">
@@ -157,31 +158,34 @@
             <p><strong>[*requires internet connection]</strong></p>
             <h3><a class="btn btn-primary" id="get-design"> CLICK HERE > to get DESIGN SOFTWARE INFO </a> </h3>
             <hr width = "90%" noshade>
+<iframe src="https://docs.google.com/spreadsheets/d/1NaIC9WgteQYMHhsBIw_nzC8EzxOaf9f6QwQ9Jcql6uk/pubhtml?widget=true&amp;headers=false"></iframe>
+
+
+            
             <hr width = "90%" noshade>
       
         </div><!-- end Details Pane -->
+
 
         <!-- SerialNum Pane -->
         <div class="tab-pane" id="tab-serialnum">
 
           <h3><a class="btn btn-primary" id="get-serialnum"> CLICK HERE > to get SERIAL NUMBER AND QR CODE </a> </h3>
 
-<input type="button" id ="post-rec" value="Print this Label">
+            <input type="button" id ="post-rec" value="Print this Label">
+
+              <h1 id="demo"></h1>
+              <p></p>
+              <div id="qrcodeTable"></div>
+
+          <script>
+            document.getElementById("demo").innerHTML = 5 + 6;
+          </script>
 
 
 
-<h1 id="demo"></h1>
-<p></p>
-<div id="qrcodeTable"></div>
+          <input type="button" id = "print-rec" value="Print">
 
-<script>
-//document.getElementById("demo").innerHTML = 5 + 6;
-</script>
-
-
-
-<!--<input type="button" value="Print" onclick="document.getElementById('.container').focus();document.getElementById('.container').print();" />
--->
          
           <hr width = "90%" noshade>
           <hr width = "90%" noshade>
@@ -189,7 +193,6 @@
       </div> <!-- tab content -->
     </div><!-- container -->
 
-    <script src="js/helptab.js"></script>
     <script src="js/jobfile.js"></script>
     <script src="js/control.js"></script>
     <script src="js/preferences.js"></script>
