@@ -1,3 +1,4 @@
+var qrReadOnce = false;
 
 $("#call-c3").click(function(evt) {
 	fabmo.runSBP('C#,3');
@@ -34,15 +35,14 @@ $("#call-DRO-hide").click(function(evt) {
 // Specials
 
 $("#run-test").click(function(evt) {
-    DoJobFile();
+    DoJobFile('jobs/test_carve.sbp');
 });
-$("#call-zup").click(function(evt) {
-    fabmo.runSBP('ZZ\nMZ,4');
+$("#call-movetest").click(function(evt) {
+    DoJobFile('jobs/move_test.sbp');
 });
 
 
 $("#get-serialnum").click(function(evt) {
-
     fabmo.getNetworkIdentity(function(err, data) {
       if (err) {
         console.info('Network not reachable');
@@ -50,34 +50,23 @@ $("#get-serialnum").click(function(evt) {
       }
       if(data.id) {
 //        $('#input-machine-name').val(data.name);
-console.log('name', data.name);
-    document.getElementById("demo").innerHTML = data.name;
+        console.log('name', data.name);
+        document.getElementById("demo").innerHTML = data.name;
   //jQuery('#qrcode').qrcode("this plugin is great");
-  jQuery('#qrcodeTable').qrcode({
-    render  : "table",
-    text  : data.name
-  }); 
-//  jQuery('#qrcodeCanvas').qrcode({
-//    text  : data.name
-//  }); 
-
-
-//        $('#section-machine-name').show();
-      } else {
-//        $('#section-machine-name').hide();
-      }
-
-      if(data.id) {
-  //      $('#input-machine-id').val(data.id);
- //       $('#section-machine-id').show();
-      } else {
-//        $('#section-machine-id').hide();
+  // jQuery('#qrcodeTable').qrcode({
+  //   render  : "table",
+  //   text  : data.name
+  // }); 
+        if (!qrReadOnce) {
+          jQuery('#qrcodeCanvas').qrcode({
+            render  : "table",
+            text  : data.name
+          }); 
+          $('#section-machine-name').show();
+          qrReadOnce = true;
+        }     
       }
     });
-
-
-
-
 });
 
 
@@ -153,4 +142,22 @@ $("#dash-launch-job-manager").click(function(evt) {
 
 $("#dash-launch-doc").click(function(evt) {
   fabmo.navigate('http://docs.handibot.com/doc-output/Handibot%202%20MANUAL%20Safe%20Use%20Source_v001.pdf', {target : '_blank'});
+});
+
+$("#call-deleteme").click(function(evt) {
+  fabmo.deleteApp('fabmo-productionapp');
+  frameElement.parentNode.removeChild(frameElement);
+  //location.reload();
+});
+
+
+// after tab is shown
+$("a[href='#tab-serialnum']").on('shown.bs.tab', function(e) {
+  console.log('shown - after the tab has been shown');
+  fabmo.hideDRO();
+});
+// or even this one if we want the earlier event
+$("a[href='#tab-serialnum']").on('show.bs.tab', function(e) {
+  console.log('show - before the new tab has been shown');
+  $("#get-serialnum").click();
 });

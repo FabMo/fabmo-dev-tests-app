@@ -1,10 +1,15 @@
 'SHOPBOT FILE IN INCHES
 IF %(25)=1 THEN GOTO UNIT_ERROR	'check to see software is set to standard
-C#,90				 	'Lookup offset values
+C#,90				 	        'Lookup offset values
 '
 'Turning router ON
-SO,1,1
+C#,6
 PAUSE 2
+
+'For Test Cut, Offset to Back half and Zero
+MY, 4
+ZY
+
 '
 'Toolpath Name = Profile 1
 'Tool Name   = V Bit 90 (13732)
@@ -3884,7 +3889,7 @@ J3,3.510497,2.897920,0.200000
 JZ,0.800000
 '
 'Turning router OFF
-SO,1,0
+C#,7
 J2,0.000000,0.000000
 END
 UNIT_ERROR:

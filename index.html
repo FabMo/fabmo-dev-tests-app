@@ -4,22 +4,21 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Quick Launch</title>
+    <title>Production CHECK</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
     <link href="css/pure-min.css" rel="stylesheet">
     <link href="css/forms-min.css" rel="stylesheet">
     <link href="css/grids-responsive-min.css" rel="stylesheet">
-
   </head>
+
   <body>
     <script src="js/lib/jquery.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
     <script src="js/lib/fabmo.js"></script>
  
-<script type="text/javascript" src="js/lib/jquery.qrcode.js"></script>
-<script type="text/javascript" src="js/lib/qrcode.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.qrcode.js"></script>
+    <script type="text/javascript" src="js/lib/qrcode.js"></script>
   	
   	<script type="text/javascript">
   		var fabmo = new FabMoDashboard();
@@ -30,134 +29,96 @@
       <!-- Nav tabs -->
       <div class="tabs-container">
         <ul class="nav nav-tabs" role="tablist">
-          <li class="active"><a href="#tab-first" role="tab" data-toggle="tab"><strong>First Steps</strong></a></li>
-          <li><a href="#tab-details" role="tab" data-toggle="tab"><strong>Next Steps</strong></a></li>
+          <li class="active"><a href="#tab-first" role="tab" data-toggle="tab"><strong>First Tests</strong></a></li>
+          <li><a id="cuttest-tab-lin" href="#tab-cuttest" role="tab" data-toggle="tab"><strong>Test Cut</strong></a></li>
           <li><a id="serial-tab-link" href="#tab-serialnum" role="tab" data-toggle="tab"><strong>Finish / Get-Print SerialNum</strong></a></li>
         </ul>
       </div>
-      
 
       <div class="tab-content">
-        <!-- First pane -->
+        <!-- First Tests pane -->
         <div class="tab-pane active" id="tab-first">
 			<div class="jumbotron">
-				<p>[This App will lead you through setting up and testing new Handibot prior to shipping.]</p>
+				<p>[This App will lead you through setting up and testing a new Handibot prior to shipping.]</p>
 			  <h2>FIRST: Lets run some tests ...</h2>
 			</div>
 
+		    <!-- Test Homing -->
+            <div>
+              <h4><strong>Running the homing routine is always a good start and a good test. You can't do it to often -- feel free to run with Macro #3 as well. Watch for binding and inconsistent return to starting location.</strong></h4>
+              <h3><a class="btn btn-success btn-lg" id="call-c3">Set Your XYZ HOME LOCATION <br> Clear area around the tool first!</a> </h3>
+            </div>
+		    <!-- Test Motion -->
             <div>  
               <h4><strong>We want to make sure all the axes are running correctly and there is no binding.</strong></h4>
               <h3><a class="btn btn-success btn-lg" id="call-zup"> Start Motion TEST</a> </h3>
-              <p class='instr-photo'> </p>
-              <div class="pure-g">
-                <div class="pure-u-1 image-container">
-                    <img class='pure-img' id="authorize" src="img/authorize2.png">
-                </div>
-              </div>  
               <p> </p>  
 			</div>
-            <div>  
-              <p>After the router has moved up, <strong>remove that protective foam tube</strong>. </p>
-              <p class='instr-photo'> </p>
-              <div class="pure-g">
-                <div class="pure-u-1 image-container">
-                    <img class='pure-img' id="remove" src="img/remove_packing.png">
-                </div>
-              </div>  
-              <p> </p>  
-            </div>
             <div>
-            <hr width = "90%" noshade>
-              <h4><strong>Moving Your Handibot Around&hellip;</strong></h4>
-                <p>You use the <strong>KEYPAD</strong> to move the head of your Handibot around to get it in position for cutting, changing bits, or just to get it out-of-the-way.</p>
-                <p>Click on "Target" in upper right corner of the screen to toggle the KEYPAD in and out. Use the arrow buttons to move the Handibot around. If you move the Handibot too far in one direction or another, it will bang into its stops. Despite the noise, it is safe to move the Handibot into these extremes. You won't hurt anything. Just beware of moving the router all the way down as the installed bit can crash into your material, damaging the bit. Also note that if you run into the end-of-travel in any direction, the location of the tool with respect to your "Home" point will be lost.</p>
+		      <!-- Check Inputs -->
+              <hr width = "90%" noshade>
+              <h4><strong>Make Sure ALL Inputs are Working</strong></h4>
+                <p>Inputs show up in the <strong>DRO DISPLAY</strong> as shown below. There are <strong>3 Inputs to CHECK</strong>.</p>
 	            <p class='instr-photo'</p>
 	            <div class="pure-g">
-	              <div class="pure-u-1 image-container">
-	                  <img class='pure-img' id="rotate-plate" src="img/fullkeypad.png">
+	              <div class="pure-u-1-2 image-container">
+	                  <img class='pure-img' src="img/inputs2.png">
 	              </div>
 	            </div>  
-	            <p> </p>  
+	            <p> </p>
+				<div class="container" style="margin-top:20px;">
+					<div class="row">
+				        <div class="col-xs-10">
+				            <h3><strong>Check These</strong></h3>
+				            <div class="well" style="max-height: 300px;overflow: auto;">
+				        		<ul class="list-group checked-list-box">
+				                  <li class="list-group-item">Check GREEN BUTTON on tool (#2)</li>
+				                  <li class="list-group-item">Check RED BUTTON (#4)</li>
+				                  <li class="list-group-item">Check LID (#3 should come on when lid opens)</li>
+                          <li class="list-group-item">Check Z-Zero Clip (#1 when clip touches Zeroing-plate)</li>
+				                </ul>
+				            </div>
+				        </div>
+					</div>
+				</div>
+
             </div>
             <hr width = "90%" noshade>
+        </div><!-- end First Pane -->
+
+        <!-- Details Pane -->
+        <div class="tab-pane" id="tab-cuttest">
+            <h2><strong>Now Ready to Do Test Cut</strong></h2>
             <div>
-              <h4><strong>Each time you use your Handibot, be sure to set its Home Location.</strong></h4>
-              <h3><a class="btn btn-success btn-lg" id="call-c3">Set Your XYZ HOME LOCATION <br> Clear area around the tool first!</a> </h3>
-                <p>Use this <strong>Green Button</strong> set your Home Location now. Homing will be done for all 3 axes, so make sure the area is clear for your Handibot to move around.</p>
-                <p>Note: if you manually (ie. using the KEYPAD) move the Handibot position and run into an end-stop after homing XYZ, you will have to set the XYZ home location again. The function to Set the Home Location is also included in the <code>Fire-Up!</code> App. The Fire-Up! App will be useful for daily set-up tasks. It also contains a more detailed explanation of setting Home and the special case of setting the Z-axis after a bit change.</p>
-            </div>
-            <div>
-              <hr width = "90%" noshade>
-              <h4><strong>NOW that you've got it all figured out, let's try running a job&hellip;</strong></h4>
-                <p>Your Handibot should be all set to run a test cut file on the board that came attached to the bottom of your tool (hopefully it is still bolted on). To test everything out we'll run the same job on the lower half of the board that was run in the top of the work area before it left Handibot HQ.</p>
-                <p>To run this project, we will be making use the <code>Job Manager</code> system-app which you will normally access from the left-side panel when you are ready to run a job.</p>
-                <p><strong>Job Preparation:</strong></p>
+                <p>Before running the test file, insert the V-bit and Zero it. Use our current technique to update the setting for the height of the plate.</p>
+                <p>This routine will automatically put the test file at the back of the sample board.</p>
+                <p></p>
+                <p><strong>Test Preparation:</strong></p>
                 <ul>
-                	<li>Switch the router to ON, and ensure the speed is set to 3 on the router dial.</li>
-                	<li>We'll be making some sawdust, so if you have a shop-vac or vacuum cleaner handy you should hook it up to the outlet on the Handibot.</li>
-                	<li>Close the hood. </li>
+                	<li>Switch the router to ON, and set speed 4 on the router dial.</li>
+                	<li>Dust ?</li>
+                	<li>Close the hood</li>
+                  <li>Now you're about to run the same test file the customers will cut in the front of the panel ...</li>
                 </ul> 
-              <hr width = "90%" noshade>
-            
 	            <p class='instr-photo'> </p>
 	            <div class="pure-g">
-	              <div class="pure-u-1  image-container">
-	                  <img class='pure-img' id="rotate-plate" src="img/carving.png">
+	              <div class="pure-u-1-3  image-container">
+	                  <img class='pure-img' src="img/carving.png">
 	              </div>
 	            </div>  
-              <p>&nbsp;</p>
-              <p><strong>Just a couple last things before running the test cut:</strong> </p>. 
-              <ul>
-              		<li>After you start it by clicking the Green bar below, a green arrow will appear in the <code>Job Manager</code> which you will need to click to start the "Job".</li>
-              		<li>And, as before, you'll also need to press the <strong>Green Button</strong> on the top of the tool to authorize the action.</li>
-              		<li><strong>As the file runs, note that there is a STOP indicator at the bottom of the window. Hit this Stop, or the plastic Red Button on the Handibot if you need to Stop the file!</strong></li>
-              		<li>After completing the test cut, relaunch this <code>Quick Launch</code> App and click on the <code>Next Steps</code> tab.</li>
-              </ul>		
-              <h3><a class="btn btn-success btn-lg" id="run-test"> Run the "Test-Carve" Job <br> and bring up the Job Manager</a></h3>
+              <h3><a class="btn btn-success btn-lg" id="run-test"> Run the "Test-Carve"</a></h3>
               <hr width = "90%" noshade>
               <p>&nbsp;</p>
             </div>  
-        </div><!-- end First Pane -->
 
 
-        <!-- Details Pane -->
-        <div class="tab-pane" id="tab-details">
-            <h2>Next Steps in Working with Handibot</h2>
-
-            <p>If you haven't already done it, please take a look at the Handibot <strong>Safety Section</strong> from the <strong>Handibot Manual</strong>. [You should have received a hard copy of the Safety Section with your tool. If not, there is a PDF version on the web at docs.handibot.com; but since you are probably connected to your tool in AP Mode at the moment, you'll need to get back on the Internet in order to view a copy.]</p>
-
-			<p>Also, as you have now finished running the test file, <strong>it would be a good time to remove the test panel from the bottom of your Handibot -- if you have not already done so</strong>. There are two bolts holding the panel on. Removing the panel will give your Handibot full access for machining surfaces and materials below it. You can always make convenient jigs and fixtures using a variation of this method for attaching your tool to a board. And, if you have not already seen it, check out the "Accessory Base" in the Handibot Store. It provides an enclosed work area for small projects.</p>
-
-            <h3>The Dashboard</h3>
-	            <p>The <strong>Dashboard</strong> provides access for all the work you will be doing with your Handibot. Note its <strong>System Apps</strong> in the left-side panel, the general <strong>App Area</strong> in the center, and the right-side, <strong>DRO panel with Keypad</strong> for manually moving the tool-head.<p>
-                <p> </p>
-		            <p class='instr-photo'> </p>
-	            <div class="pure-g">
-	              <div class="pure-u-1  image-container">
-	                  <img class='pure-img' id="im_dashboard" src="img/dash.png">
-	              </div>
-	            </div>  
-              <p>&nbsp;</p>
-            <h3>Handibot Utility Apps</h3>
-            	<p>Most Apps will provide a direct way to carry out specific jobs or tasks. <code>Hole Cutter </code>is an example of a basic utility App.</p>
-            <h3>More Advanced Apps</h3>
-            	<p>On-board Apps can also carry out some simple parametric design tasks. Check out <code>Beamer</code> and <code>TerrainMan</code>. Basically set the parameters and then click "Done" or "Cut" and your project will be sent to the Job Manager to run.</p>
-            <h3>Specialty Apps</h3>
-                <ul>
-                	<li><code>Smooth Sketch</code> do quick and fun drawings and carve them into a surface.</li>
-                	<li><code>Touch-and-Go</code> will move your tool-head to a designated location.</li>
-                	<li><code>Sb4</code> is a traditional CNC interface, similar to ShopBot's standard interface.</li>
-                	<li><code>Fire-Up!</code> will help you with daily Handibot set-up activities.</li>
-                	<li><code>theNews</code> will keep you posted on the latest Handibot News and Bulletins.</li>
-                	<li><code>ExampleApp</code> is the definitive example of how to create an App.</li>
-                </ul>
-            <h3>Putting Your Handibot on a Wi-Fi Network</h3>
-              <p>So far, you've been exploring Handibotting using the direct ANchor Point (AP) Mode, wireless link to the tool. You can also put Handibot/FabMo on your Wi-Fi network in order to give it access to jobs and resources in the internet cloud or over your network. If you don't have instructions handy, put your device back on the internet and go to: <strong>docs.handibot.com</strong> in order to access the: <em>"Hooking-Up: Network mode"</em> document.</p>
             <h3>Creating your own Jobs: DESIGN</h3>
                 <p>Once you've got a feel for how the FabMo platform works and the usefullness of Apps, you'll want to start working on designing your own projects that you will run using the Job Manager. We've provided some great software to get started with design for digital fabrication.</p>
             <p><strong>[*requires internet connection]</strong></p>
             <h3><a class="btn btn-primary" id="get-design"> CLICK HERE > to get DESIGN SOFTWARE INFO </a> </h3>
             <hr width = "90%" noshade>
+
+
 <iframe src="https://docs.google.com/spreadsheets/d/1NaIC9WgteQYMHhsBIw_nzC8EzxOaf9f6QwQ9Jcql6uk/pubhtml?widget=true&amp;headers=false"></iframe>
 
 
@@ -169,36 +130,43 @@
 
         <!-- SerialNum Pane -->
         <div class="tab-pane" id="tab-serialnum">
+      
+          
+          <h3><a id="get-serialnum"></a>[Select and Print Labels with SnagIt]</h3>
+          <hr width = "90%" noshade>
+          
+              <div class="pure-u-1  image-container" id="qrcodeCanvas">
+                <h2 id="demo"></h2>
+              </div>
+              <p>This is your Handibot's serial number and temporary name. Select it in the Wifi manager of your PC or mobile device for AccessPoint link directly to your tool.</p>
+              <p>Use the "FabMo Minder" from <strong>docs.handibot.com</strong> for identifying your Handibot after you have put it on a network.</p>
 
-          <h3><a class="btn btn-primary" id="get-serialnum"> CLICK HERE > to get SERIAL NUMBER AND QR CODE </a> </h3>
-
-            <input type="button" id ="post-rec" value="Print this Label">
-
-              <h1 id="demo"></h1>
+          <hr width = "90%" noshade>
               <p></p>
-              <div id="qrcodeTable"></div>
+              <p>{{image here for GREEN BUTTON helper label}}</p>
+              <p></p>
+              
 
           <script>
-            document.getElementById("demo").innerHTML = 5 + 6;
+            document.getElementById("demo").innerHTML;
           </script>
 
-
-
-          <input type="button" id = "print-rec" value="Print">
-
-         
+       
           <hr width = "90%" noshade>
+            <h3><a class="btn btn-danger btn-lg" id="call-deleteme"> FINISHED. DELETE APP !!!</a> </h3>
           <hr width = "90%" noshade>
+
         </div> <!-- END SerialNum Pane -->
       </div> <!-- tab content -->
+
     </div><!-- container -->
 
     <script src="js/jobfile.js"></script>
-    <script src="js/control.js"></script>
+    <script src="js/helpers.js"></script>
     <script src="js/preferences.js"></script>
     <script src="js/actions.js"></script>
     <script type="text/javascript">
-        fabmo.hideDRO();
+        fabmo.showDRO();
     </script>
 
     <script type="text/javascript">

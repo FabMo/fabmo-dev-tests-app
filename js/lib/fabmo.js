@@ -50,13 +50,13 @@ var FabMoDashboard = function(options) {
     if(!this.options.defer) {
 		this.ready();
 	}
-}
+};
 
 FabMoDashboard.prototype._setOptions = function(options) {
 	options = options || {};
 	this.options = {};
 	this.options.defer = options.defer || false;
-}
+};
 
 /**
  * @method isPresent
@@ -68,21 +68,21 @@ FabMoDashboard.prototype.isPresent = function() {
     } catch (e) {
         return true;
     }
-}
+};
 
 FabMoDashboard.prototype._download = function(data, strFileName, strMimeType) {
 	// https://github.com/rndme/download
 	// data can be a string, Blob, File, or dataURL
 
-	var self = window 						// this script is only for browsers anyway...
-	var u = "application/octet-stream" 		// this default mime also triggers iframe downloads
+	var self = window; 						// this script is only for browsers anyway...
+	var u = "application/octet-stream"; 		// this default mime also triggers iframe downloads
 	var m = strMimeType || u;
 	var x = data;
 	var D = document;
 	var a = D.createElement("a");
 	var z = function(a){return String(a);};
 	var B = (self.Blob || self.MozBlob || self.WebKitBlob || z);
-	var B=B.call ? B.bind(self) : Blob;
+	B = B.call ? B.bind(self) : Blob;
 	var fn = strFileName || "download";
 	var blob;
 	var fr;
@@ -160,13 +160,13 @@ FabMoDashboard.prototype._download = function(data, strFileName, strMimeType) {
 		fr.readAsDataURL(blob);
 	}
 	return true;
-} // _download
+}; // _download
 
 FabMoDashboard.prototype._call = function(name, data, callback) {
 	// console.log(this)
 	if(this.isPresent()) {
 		//console.debug("Calling " + name + " with " + JSON.stringify(data));
-		message = {"call":name, "data":data}
+		message = {"call":name, "data":data};
 		if(callback) {
 			message.id = this._id++;
 			this._handlers[message.id] = callback;
@@ -176,7 +176,7 @@ FabMoDashboard.prototype._call = function(name, data, callback) {
 		//console.debug("Simulating " + name + " with " + JSON.stringify(data));
 		this._simulateCall(name, data, callback);
 	}
-}
+};
 
 FabMoDashboard.prototype._simulateCall = function(name, data, callback) {
     toaster();
@@ -193,12 +193,14 @@ FabMoDashboard.prototype._simulateCall = function(name, data, callback) {
 			}.bind(this));
 
 			// Data.length
+			var msg;
 			if(data.jobs.length === 1) {
-				var msg = "Job Submitted: " + data.jobs[0].filename
+				msg = "Job Submitted: " + data.jobs[0].filename;
+				text.textContent = msg;
 			} else {
-				var msg = data.jobs.length + " Jobs Submitted: " + files.join(',');
+				msg = data.jobs.length + " Jobs Submitted: " + files.join(',');
+				text.textContent = msg;
 			}
-			text.textContent = msg;
 			showToaster(toast);
 		break;
 
@@ -227,16 +229,16 @@ FabMoDashboard.prototype._simulateCall = function(name, data, callback) {
 			showToaster(toast);
 		break;
 	}
-}
+};
 
 FabMoDashboard.prototype._on = function(name, callback) {
 
-	var message = {"on":name}
+	var message = {"on":name};
 	if(callback) {
 		this._event_listeners[name].push(callback);
 	}
 	this.target.postMessage(message, '*');
-}
+};
 
 /**
  * Bind a callback to the specified event.
@@ -247,7 +249,7 @@ FabMoDashboard.prototype._on = function(name, callback) {
  */
 FabMoDashboard.prototype.on = function(name, callback) {
 	this._on(name, callback);
-}
+};
 
 
 FabMoDashboard.prototype._setupMessageListener = function() {
@@ -257,7 +259,7 @@ FabMoDashboard.prototype._setupMessageListener = function() {
 			case 'cb':
 				if('id' in message) {
 		 			if(message.id in this._handlers) {
-		 				cb = this._handlers[message.id]
+		 				cb = this._handlers[message.id];
 		 				if(message.status === "success") {
 		 					cb(null, message.data);
 		 				} else {
@@ -270,8 +272,8 @@ FabMoDashboard.prototype._setupMessageListener = function() {
 			case 'evt':
 				if('id' in message) {
 					if(message.id in this._event_listeners) {
-						listeners = this._event_listeners[message.id]
-						for(i in listeners) {
+						listeners = this._event_listeners[message.id];
+						for(var i in listeners) {
 							listeners[i](message.data);
 						}
 					}
@@ -279,7 +281,7 @@ FabMoDashboard.prototype._setupMessageListener = function() {
 				break;
 			}
 	}.bind(this));
-}
+};
 
 /**
  * Indicate that the app is loaded and ready to go!
@@ -288,7 +290,7 @@ FabMoDashboard.prototype._setupMessageListener = function() {
 FabMoDashboard.prototype.ready = function() {
 	this._call('ready');
 	this.isReady = true;
-}
+};
 
 /**
  * Set the message to display while an app is loading.  You can call this any time before
@@ -298,7 +300,7 @@ FabMoDashboard.prototype.ready = function() {
  */
 FabMoDashboard.prototype.setBusyMessage = function(message) {
 	this._call('setBusyMessage', {'message' : message});
-}
+};
 
 /**
  * If this app was invoked from another app, get the arguments (if any) that were passed on invocation.
@@ -308,7 +310,7 @@ FabMoDashboard.prototype.setBusyMessage = function(message) {
  */
 FabMoDashboard.prototype.getAppArgs = function(callback) {
 	this._call("getAppArgs", null, callback);
-}
+};
 
 /**
  * Get the information for this app.
@@ -321,7 +323,7 @@ FabMoDashboard.prototype.getAppArgs = function(callback) {
  */
 FabMoDashboard.prototype.getAppInfo = function(callback) {
 	this._call("getAppInfo", null, callback);
-}
+};
 
 /**
  * Launch the specified app by app ID, with optional arguments.
@@ -335,7 +337,7 @@ FabMoDashboard.prototype.getAppInfo = function(callback) {
  */
 FabMoDashboard.prototype.launchApp = function(id, args, callback) {
 	this._call("launchApp", {'id': id, 'args':args}, callback);
-}
+};
 
 /**
  * Show the DRO (Digital ReadOut) in the dashboard if it is not already shown.
@@ -346,7 +348,7 @@ FabMoDashboard.prototype.launchApp = function(id, args, callback) {
  */
 FabMoDashboard.prototype.showDRO = function(callback) {
 	this._call("showDRO", null, callback);
-}
+};
 
 /**
  * Hide the DRO (Digital ReadOut) in the dashboard if it is not already hidden.
@@ -357,14 +359,14 @@ FabMoDashboard.prototype.showDRO = function(callback) {
  */
 FabMoDashboard.prototype.hideDRO = function(callback) {
 	this._call("hideDRO", null, callback);
-}
+};
 
 //Modal Functions
 FabMoDashboard.prototype.showModal = function(options, callback) {
 	var callbacks = {
 		"ok" : options.ok,
 		"cancel" : options.cancel
-	}
+	};
 	var showModalCallback = function(err, buttonPressed) {
 		if(err) {
 			callback(err);
@@ -377,16 +379,16 @@ FabMoDashboard.prototype.showModal = function(options, callback) {
 				callback();
 			}
 		}
- 	}
+ 	};
  	options.ok = options.ok ? true : false;
  	options.cancel = options.cancel ? true : false;
 
     this._call("openModal", options, showModalCallback);
-}
+};
 
 FabMoDashboard.prototype.hideModal = function(options, callback) {
     this._call("closeModal", null, callback);
-}
+};
 
 // Footer Functions
 // FabMoDashboard.prototype.showFooter = function(callback) {
@@ -405,16 +407,16 @@ FabMoDashboard.prototype.hideModal = function(options, callback) {
  */
 FabMoDashboard.prototype.notify = function(type, message, callback) {
 	this._call("notify", {'type':type, 'message':message}, callback);
-}
+};
 
 FabMoDashboard.prototype.hideFooter = function(callback) {
 	this._call("hideFooter", null, callback);
-}
+};
 
 // Notification functions
 FabMoDashboard.prototype.notification = function(type,message,callback) {
 	this._call("notification", {'type':type,'message':message}, callback);
-}
+};
 FabMoDashboard.prototype.notify = FabMoDashboard.prototype.notification;
 
 function _makeFile(obj) {
@@ -503,12 +505,12 @@ FabMoDashboard.prototype.submitJob = function(jobs, options, callback) {
 	}
 
 	args.options = options || {};
-	this._call("submitJob", args, callback)
-}
+	this._call("submitJob", args, callback);
+};
 
 FabMoDashboard.prototype.updateOrder = function(data, callback) {
 	this._call("updateOrder", data, callback);
-}
+};
 
 /**
  * Resubmit a job by its ID.  Resubmitted jobs come in at the back of the job queue.
@@ -519,8 +521,8 @@ FabMoDashboard.prototype.updateOrder = function(data, callback) {
  * @param {Error} callback.err Error object if there was an error.
  */
 FabMoDashboard.prototype.resubmitJob = function(id, callback) {
-	this._call("resubmitJob", id, callback)
-}
+	this._call("resubmitJob", id, callback);
+};
 
 /**
  * Delete a job (cancels if running, sends to trash otherwise.)
@@ -531,8 +533,8 @@ FabMoDashboard.prototype.resubmitJob = function(id, callback) {
  * @param {Error} callback.err Error object if there was an error.
  */
 FabMoDashboard.prototype.deleteJob = function(id, callback) {
-	this._call("deleteJob", id, callback)
-}
+	this._call("deleteJob", id, callback);
+};
 
 FabMoDashboard.prototype.cancelJob = FabMoDashboard.prototype.cancelJob;
 
@@ -552,8 +554,8 @@ FabMoDashboard.prototype.cancelJob = FabMoDashboard.prototype.cancelJob;
  * @param {String} callback.job.state Current state of the job.  One of `pending`,`running`,`finished`,`cancelled` or `failed`
  */
 FabMoDashboard.prototype.getJobInfo = function(id, callback) {
-	this._call("getJobInfo", id, callback)
-}
+	this._call("getJobInfo", id, callback);
+};
 
 /**
  * Get a list of jobs that are currently pending and running.
@@ -567,7 +569,7 @@ FabMoDashboard.prototype.getJobInfo = function(id, callback) {
  */
 FabMoDashboard.prototype.getJobsInQueue = function(callback) {
 	this._call("getJobsInQueue",null, callback);
-}
+};
 
 /**
  * Remove all pending jobs from the queue.
@@ -578,7 +580,7 @@ FabMoDashboard.prototype.getJobsInQueue = function(callback) {
  */
 FabMoDashboard.prototype.clearJobQueue = function(callback) {
 	this._call("clearJobQueue",null, callback);
-}
+};
 
 /**
  * Get a list of jobs in the history.
@@ -593,7 +595,7 @@ FabMoDashboard.prototype.clearJobQueue = function(callback) {
  */
 FabMoDashboard.prototype.getJobHistory = function(options, callback) {
 	this._call("getJobHistory",options, callback);
-}
+};
 
 /**
  * Run the next job in the job queue.
@@ -605,7 +607,7 @@ FabMoDashboard.prototype.getJobHistory = function(options, callback) {
  */
 FabMoDashboard.prototype.runNext = function(callback) {
 	this._call("runNext",null, callback);
-}
+};
 
 /**
  * Pause the execution of the current job or operation.  Operation can be resumed.
@@ -617,7 +619,7 @@ FabMoDashboard.prototype.runNext = function(callback) {
  */
 FabMoDashboard.prototype.pause = function(callback) {
 	this._call("pause",null, callback);
-}
+};
 
 /**
  * Stop execution of the current job or operation.  Operation cannot be resumed.
@@ -629,7 +631,7 @@ FabMoDashboard.prototype.pause = function(callback) {
  */
 FabMoDashboard.prototype.stop = function(callback) {
 	this._call("stop",null, callback);
-}
+};
 
 /**
  * Resume the current operation of the system is paused.
@@ -641,7 +643,7 @@ FabMoDashboard.prototype.stop = function(callback) {
  */
 FabMoDashboard.prototype.resume = function(callback) {
 	this._call("resume",null, callback);
-}
+};
 
 /**
  * Perform a fixed manual move in a single axis.  (Sometimes called a nudge)
@@ -655,7 +657,7 @@ FabMoDashboard.prototype.resume = function(callback) {
  */
 FabMoDashboard.prototype.manualMoveFixed = function(axis, speed, distance, callback) {
 	this._call("manualMoveFixed",{"axis":axis, "speed": speed, "dist":distance}, callback);
-}
+};
 
 /**
  * Start performing a manual move of the specified axis at the specified speed.
@@ -666,7 +668,7 @@ FabMoDashboard.prototype.manualMoveFixed = function(axis, speed, distance, callb
  */
 FabMoDashboard.prototype.manualStart = function(axis, speed) {
 	this._call("manualStart",{"axis":axis, "speed":speed}, callback);
-}
+};
 
 /**
  * Send a "heartbeat" to the system, authorizing continued manual movement.  Manual moves must be continually
@@ -676,7 +678,7 @@ FabMoDashboard.prototype.manualStart = function(axis, speed) {
  */
 FabMoDashboard.prototype.manualHeartbeat = function() {
 	this._call("manualHeartbeat",{}, callback);
-}
+};
 
 /**
  * Stop the tool immediately.
@@ -685,7 +687,7 @@ FabMoDashboard.prototype.manualHeartbeat = function() {
  */
 FabMoDashboard.prototype.manualStop = function() {
 	this._call("manualStop",{}, callback);
-}
+};
 
 /**
  * Get the list of all the installed apps.
@@ -696,7 +698,7 @@ FabMoDashboard.prototype.manualStop = function() {
  */
 FabMoDashboard.prototype.getApps = function(callback) {
 	this._call("getApps",null,callback);
-}
+};
 
 
 FabMoDashboard.prototype.submitApp = function(apps, options, callback) {
@@ -731,76 +733,76 @@ FabMoDashboard.prototype.submitApp = function(apps, options, callback) {
 	}
 
 	args.options = options || {};
-	this._call("submitApp", args, callback)
-}
+	this._call("submitApp", args, callback);
+};
 
 FabMoDashboard.prototype.getConfig = function(callback) {
 	this._call("getConfig", null, callback);
-}
+};
 
 FabMoDashboard.prototype.setConfig = function(data, callback) {
 	this._call("setConfig", data, callback);
-}
+};
 
 FabMoDashboard.prototype.deleteApp = function(id, callback) {
 	this._call("deleteApp",id,callback);
-}
+};
 
 FabMoDashboard.prototype.runGCode = function(text, callback) {
 	this._call("runGCode", text, callback);
-}
+};
 
 FabMoDashboard.prototype.runSBP = function(text, callback) {
 	this._call("runSBP", text, callback);
-}
+};
 
 FabMoDashboard.prototype.connectToWifi = function(ssid, key, callback) {
 	this._call("connectToWifi", {'ssid':ssid, 'key':key}, callback);
-}
+};
 
 FabMoDashboard.prototype.disconnectFromWifi = function(callback) {
 	this._call("disconnectFromWifi", null, callback);
-}
+};
 
 FabMoDashboard.prototype.forgetWifi = function(ssid, key, callback) {
 	this._call("forgetWifi", {'ssid':ssid}, callback);
-}
+};
 
 FabMoDashboard.prototype.enableWifi = function(callback) {
 	this._call("enableWifi", null, callback);
-}
+};
 
 FabMoDashboard.prototype.disableWifi = function(callback) {
 	this._call("disableWifi", null, callback);
-}
+};
 
 FabMoDashboard.prototype.enableWifiHotspot = function(callback) {
 	this._call("enableWifiHotspot", null, callback);
-}
+};
 
 FabMoDashboard.prototype.disableWifiHotspot = function(callback) {
 	this._call("disableWifiHotspot", null, callback);
-}
+};
 
 FabMoDashboard.prototype.getWifiNetworks = function(callback) {
 	this._call("getWifiNetworks", null, callback);
-}
+};
 
 FabMoDashboard.prototype.getWifiNetworkHistory = function(callback) {
 	this._call("getWifiNetworkHistory", null, callback);
-}
+};
 
 FabMoDashboard.prototype.getNetworkIdentity = function(callback) {
 	this._call("getNetworkIdentity", null, callback);
-}
+};
 
 FabMoDashboard.prototype.setNetworkIdentity = function(identity, callback) {
 	this._call("setNetworkIdentity", identity, callback);
-}
+};
 
 FabMoDashboard.prototype.isOnline = function(callback) {
 	this._call("isOnline", null, callback);
-}
+};
 
 /**
  * Get a list of all the macros installed on the tool.
@@ -812,7 +814,7 @@ FabMoDashboard.prototype.isOnline = function(callback) {
  */
 FabMoDashboard.prototype.getMacros = function(callback) {
 	this._call("getMacros", null, callback);
-}
+};
 
 /**
  * Run the specified macro immediately.  Macro does not appear in the job history.
@@ -824,11 +826,11 @@ FabMoDashboard.prototype.getMacros = function(callback) {
  */
 FabMoDashboard.prototype.runMacro = function(id, callback) {
 	this._call("runMacro", id, callback);
-}
+};
 
 FabMoDashboard.prototype.updateMacro = function(id, macro, callback) {
 	this._call("updateMacro", {'id':id, 'macro':macro}, callback);
-}
+};
 
 /**
  * Request a status report from the system.  The status object is returned in the callback to this function, as well as posted
@@ -862,7 +864,7 @@ FabMoDashboard.prototype.updateMacro = function(id, macro, callback) {
  */
 FabMoDashboard.prototype.requestStatus = function(callback) {
 	this._call("requestStatus", null, callback);
-}
+};
 
 /**
  * Start a connection to the video streaming service on your fabmo device.
@@ -874,7 +876,7 @@ FabMoDashboard.prototype.requestStatus = function(callback) {
  */
 FabMoDashboard.prototype.startVideoStreaming = function(callback) {
 	this._call("startVideoStreaming", null, callback);
-}
+};
 
 
 /**
@@ -890,13 +892,13 @@ FabMoDashboard.prototype.onVideoFrame = function (callback) {
     imageObj.src = "data:image/jpeg;base64,"+data;
     imageObj.onload = function(){
       callback(imageObj);
-    }
-  })
+    };
+  });
 };
 
 FabMoDashboard.prototype.deleteMacro = function(id, callback) {
 	this._call("deleteMacro", id, callback);
-}
+};
 
 /**
  * Get the configuration object for the currently running app.  The configuration object is a JSON object
@@ -909,7 +911,7 @@ FabMoDashboard.prototype.deleteMacro = function(id, callback) {
  */
 FabMoDashboard.prototype.getAppConfig = function(callback) {
 	this._call("getAppConfig", null, callback);
-}
+};
 
 /**
  * Set the app configuration to the provided option.
@@ -922,7 +924,7 @@ FabMoDashboard.prototype.getAppConfig = function(callback) {
  */
 FabMoDashboard.prototype.setAppConfig = function(config, callback) {
 	this._call("setAppConfig", config, callback);
-}
+};
 
 /**
  * Get the current FabMo version
@@ -938,7 +940,7 @@ FabMoDashboard.prototype.setAppConfig = function(config, callback) {
  */
 FabMoDashboard.prototype.getVersion = function(callback) {
 	this._call("getVersion", null, callback);
-}
+};
 
 /**
  * Control top level navigation for the dashboard.  Usually this is used to open another browser/tab window with a link from within an app,
@@ -951,23 +953,23 @@ FabMoDashboard.prototype.getVersion = function(callback) {
 FabMoDashboard.prototype.navigate = function(url, options, callback) {
 	var loc = window.location.href;
 	this._call("navigate", {'path' : loc.substr(0, loc.lastIndexOf('/')) + '/', 'url' : url, 'options' : options || {}}, callback);
-}
+};
 
 FabMoDashboard.prototype.getCurrentUser = function(callback){
   this._call("getCurrentUser",null,callback);
-}
+};
 FabMoDashboard.prototype.addUser = function(user_info,callback){
   this._call("addUser",user_info,callback);
-}
+};
 FabMoDashboard.prototype.modifyUser = function(user,callback){
   this._call("modifyUser",user,callback);
-}
+};
 FabMoDashboard.prototype.deleteUser = function(user,callback){
   this._call("deleteUser",user,callback);
-}
+};
 FabMoDashboard.prototype.getUsers = function(callback){
   this._call("getUsers",null,callback);
-}
+};
 
 
 var toaster = function () {
@@ -976,11 +978,11 @@ var toaster = function () {
     el.style.cssText = 'position:fixed; visibility:hidden; margin: auto; top: 20px; right: 20px; width: 250px; height: 60px; background-color: #F3F3F3; border-radius: 3px; z-index: 1005; box-shadow: 4px 4px 7px -2px rgba(0,0,0,0.75);';
     el.innerHTML = "<span id='alert-text' style= 'position:absolute; margin: auto; top: 0; right: 0; bottom: 0; left: 0; height: 20px; width: 250px; text-align: center;'></span>";
 	document.body.appendChild(el);
-}
+};
 var showToaster = function (toaster) {
     toaster.style.visibility = 'visible';
     setTimeout(function(){document.body.removeChild(toaster)}, 1000);
-}
+};
 console.log(FabMoDashboard);
 return FabMoDashboard;
 

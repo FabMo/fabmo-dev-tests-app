@@ -27,3 +27,12 @@ body {
 	height:41px;
 	top: 0;
 }
+
+/* CSS REQUIRED for list box */
+.state-icon {
+    left: -5px;
+}
+.list-group-item-primary {
+    color: rgb(255, 255, 255);
+    background-color: rgb(66, 139, 202);
+}

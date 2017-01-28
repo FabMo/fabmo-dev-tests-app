@@ -1,8 +1,8 @@
 {
-  "name": "Handibot_Production",
+  "name": "FINAL CHECK !",
   "main": "./index.html",
   "icon": "icon.png",
-  "icon_color": "yellow",
+  "icon_color": "red",
   "version": "1.0.0",
   "author": "Ted Hall + Ryan Sturmer",
   "website": "http://www.handibot.com",
