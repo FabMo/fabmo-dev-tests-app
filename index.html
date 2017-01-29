@@ -110,17 +110,15 @@
               <hr width = "90%" noshade>
               <p>&nbsp;</p>
             </div>  
-
-
-            <h3>Creating your own Jobs: DESIGN</h3>
-                <p>Once you've got a feel for how the FabMo platform works and the usefullness of Apps, you'll want to start working on designing your own projects that you will run using the Job Manager. We've provided some great software to get started with design for digital fabrication.</p>
-            <p><strong>[*requires internet connection]</strong></p>
-            <h3><a class="btn btn-primary" id="get-design"> CLICK HERE > to get DESIGN SOFTWARE INFO </a> </h3>
             <hr width = "90%" noshade>
 
-
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScB5j9ZhQki6LoWtSo-BsaPoZafHLkTpeg28oMZ3TKaOhzFaw/viewform?embedded=true#start=embed" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+    <script>
+      fabmo.navigate("https://docs.google.com/forms/d/e/1FAIpQLScB5j9ZhQki6LoWtSo-BsaPoZafHLkTpeg28oMZ3TKaOhzFaw/viewform?embedded=true#start=embed",{target : '_blank'});
+    </script>  
 <iframe src="https://docs.google.com/spreadsheets/d/1NaIC9WgteQYMHhsBIw_nzC8EzxOaf9f6QwQ9Jcql6uk/pubhtml?widget=true&amp;headers=false"></iframe>
-
+<iframe src="https://docs.google.com/spreadsheets/d/1LuCzhduFyZ9_erDGJ4pctm_kLWXFcw602IlPcqWchow/pubhtml?widget=true&amp;headers=true"></iframe>
+            <h3><a class="btn btn-danger btn-lg" id="post-rec"> Post Data</a> </h3>
 
             
             <hr width = "90%" noshade>
@@ -130,28 +128,17 @@
 
         <!-- SerialNum Pane -->
         <div class="tab-pane" id="tab-serialnum">
-      
-          
           <h3><a id="get-serialnum"></a>[Select and Print Labels with SnagIt]</h3>
           <hr width = "90%" noshade>
-          
               <div class="pure-u-1  image-container" id="qrcodeCanvas">
                 <h2 id="demo"></h2>
               </div>
               <p>This is your Handibot's serial number and temporary name. Select it in the Wifi manager of your PC or mobile device for AccessPoint link directly to your tool.</p>
               <p>Use the "FabMo Minder" from <strong>docs.handibot.com</strong> for identifying your Handibot after you have put it on a network.</p>
-
           <hr width = "90%" noshade>
               <p></p>
               <p>{{image here for GREEN BUTTON helper label}}</p>
               <p></p>
-              
-
-          <script>
-            document.getElementById("demo").innerHTML;
-          </script>
-
-       
           <hr width = "90%" noshade>
             <h3><a class="btn btn-danger btn-lg" id="call-deleteme"> FINISHED. DELETE APP !!!</a> </h3>
           <hr width = "90%" noshade>
@@ -160,6 +147,10 @@
       </div> <!-- tab content -->
 
     </div><!-- container -->
+
+    <script>
+      document.getElementById("demo").innerHTML;
+    </script>
 
     <script src="js/jobfile.js"></script>
     <script src="js/helpers.js"></script>
@@ -170,14 +161,14 @@
     </script>
 
     <script type="text/javascript">
-        // Prevent a stray enter key from inadvertently submitting a form (and setting the tool in motion!)
-        $(document).ready(function() {
-          $(window).keydown(function(event){
-            if(event.keyCode == 13) {
-              event.preventDefault();
-              return false;
-            }
-          });
+      // Prevent a stray enter key from inadvertently submitting a form (and setting the tool in motion!)
+      $(document).ready(function() {
+        $(window).keydown(function(event){
+          if(event.keyCode == 13) {
+            event.preventDefault();
+            return false;
+          }
+        });
 	    });
     </script>
 

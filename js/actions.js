@@ -42,80 +42,6 @@ $("#call-movetest").click(function(evt) {
 });
 
 
-$("#get-serialnum").click(function(evt) {
-    fabmo.getNetworkIdentity(function(err, data) {
-      if (err) {
-        console.info('Network not reachable');
-        return;
-      }
-      if(data.id) {
-//        $('#input-machine-name').val(data.name);
-        console.log('name', data.name);
-        document.getElementById("demo").innerHTML = data.name;
-  //jQuery('#qrcode').qrcode("this plugin is great");
-  // jQuery('#qrcodeTable').qrcode({
-  //   render  : "table",
-  //   text  : data.name
-  // }); 
-        if (!qrReadOnce) {
-          jQuery('#qrcodeCanvas').qrcode({
-            render  : "table",
-            text  : data.name
-          }); 
-          $('#section-machine-name').show();
-          qrReadOnce = true;
-        }     
-      }
-    });
-});
-
-
-//$("#call-pull-keypad").click(function(evt) {
-//  fabmo.notify('info', 'Heads Up! How extensive can this message be??');
-//});
-
-function postToGoogle(){
-    //var name = $j('#name').val();
-    var date = "5/5/15";
-    var custID = "TH222222";
-    var cust_name = "Ted Hall";
-    var cust_loc = "Durham, NC";
-    var ser_num = "test3333333";
-    //var ser_num = $('#demo');
-    //if ((name !== "") && (email !== "") && ((feed !== ""))) {
-        $.ajax({
-            url: "https://docs.google.com/spreadsheets/d/1NaIC9WgteQYMHhsBIw_nzC8EzxOaf9f6QwQ9Jcql6uk/formResponse",
-            data: {"entry.1" : date, "entry.2" : custID, "entry.3" : cust_name, "entry.4": cust_loc, "entry.5": ser_num},
-            type: "POST",
-            dataType: "xml",
-        });
-    console.log("posted");
-    //}
-    //else {
-        //Error message
-    //}
-}
-
-$("#post-rec").click(function(evt) {
-//  postToGoogle();
-});
-
-$("#print-rec").click(function(evt) {
-//var result = contentWindow.document.execCommand('print', false, null);
-var result = iframe.contentWindow.document.execCommand('print', false, null);
-
-if (!result)
-contentWindow.print();
-
-});
-
-function printFrame(id) {
-            var frm = document.getElementById(id).contentWindow;
-//            frm.focus();
-            frm.print();
-            return false;
-}
-
 
 $("#nav-showdro").click(function(evt) {
   fabmo.showDRO();
@@ -144,20 +70,95 @@ $("#dash-launch-doc").click(function(evt) {
   fabmo.navigate('http://docs.handibot.com/doc-output/Handibot%202%20MANUAL%20Safe%20Use%20Source_v001.pdf', {target : '_blank'});
 });
 
+
+
+// Working with Label Tab
+// ... after tab shown 
+$("a[href='#tab-serialnum']").on('shown.bs.tab', function(e) {
+  console.log('shown - after the tab has been shown');
+  fabmo.hideDRO();
+});
+// ... earlier 
+$("a[href='#tab-serialnum']").on('show.bs.tab', function(e) {
+  console.log('show - before the new tab has been shown');
+  $("#get-serialnum").click();
+});
+
 $("#call-deleteme").click(function(evt) {
   fabmo.deleteApp('fabmo-productionapp');
   frameElement.parentNode.removeChild(frameElement);
   //location.reload();
 });
 
-
-// after tab is shown
-$("a[href='#tab-serialnum']").on('shown.bs.tab', function(e) {
-  console.log('shown - after the tab has been shown');
-  fabmo.hideDRO();
+$("#get-serialnum").click(function(evt) {
+    fabmo.getNetworkIdentity(function(err, data) {
+      if (err) {
+        console.info('Network not reachable');
+        return;
+      }
+      if(data.id) {
+        console.log('name', data.name);
+        document.getElementById("demo").innerHTML = data.name;
+        if (!qrReadOnce) {
+          jQuery('#qrcodeCanvas').qrcode({
+            render  : "table",
+            text  : data.name
+          }); 
+          $('#section-machine-name').show();
+          qrReadOnce = true;
+        }     
+      }
+    });
 });
-// or even this one if we want the earlier event
-$("a[href='#tab-serialnum']").on('show.bs.tab', function(e) {
-  console.log('show - before the new tab has been shown');
-  $("#get-serialnum").click();
+
+
+// Working with Google Sheets
+function postToGoogle(){
+    //var name = $j('#name').val();
+    var date = "5/5/15";
+    var custID = "TH222222";
+    var cust_name = "Ted Hall";
+    var cust_loc = "Durham, NC";
+    var ser_num = "test3333333";
+    //var ser_num = $('#demo');
+    //if ((name !== "") && (email !== "") && ((feed !== ""))) {
+        $.ajax({
+            url: "https://docs.google.com/spreadsheets/d/1LuCzhduFyZ9_erDGJ4pctm_kLWXFcw602IlPcqWchow/formResponse",
+            data: {"entry.1" : date, "entry.2" : custID},
+            type: "POST",
+            dataType: "xml",
+            statusCode:  {
+                    0: function (){
+ 
+                       // $j('#name').val("");
+                       // $j('#email').val("");
+                       // $j('#feed').val("");
+                        //Success message
+                    },
+                    200: function (){
+                       // $j('#name').val("");
+                       // $j('#email').val("");
+                       // $j('#feed').val("");
+                        //Success Message
+                    }
+            }        
+        });
+
+
+
+    console.log("posted");
+    //}
+    //else {
+        //Error message
+    //}
+}
+
+$("#post-rec").click(function(evt) {
+  fabmo._download("test this stuff", 'fabmo_config_backup.fmc','text/json');
+  //fabmo.navigate("https://docs.google.com/spreadsheets/d/1LuCzhduFyZ9_erDGJ4pctm_kLWXFcw602IlPcqWchow/edit?usp=sharing",{target : '_blank'});
+
+  postToGoogle();
+
+  //fabmo._download(JSON.stringify(conf), 'fabmo_config_backup.fmc','text/json');
+  //postToGoogle();
 });
