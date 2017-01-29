@@ -111,54 +111,10 @@ $("#get-serialnum").click(function(evt) {
     });
 });
 
-
-// Working with Google Sheets
-function postToGoogle(){
-    //var name = $j('#name').val();
-    var date = "5/5/15";
-    var custID = "TH222222";
-    var cust_name = "Ted Hall";
-    var cust_loc = "Durham, NC";
-    var ser_num = "test3333333";
-    //var ser_num = $('#demo');
-    //if ((name !== "") && (email !== "") && ((feed !== ""))) {
-        $.ajax({
-            url: "https://docs.google.com/spreadsheets/d/1LuCzhduFyZ9_erDGJ4pctm_kLWXFcw602IlPcqWchow/formResponse",
-            data: {"entry.1" : date, "entry.2" : custID},
-            type: "POST",
-            dataType: "xml",
-            statusCode:  {
-                    0: function (){
- 
-                       // $j('#name').val("");
-                       // $j('#email').val("");
-                       // $j('#feed').val("");
-                        //Success message
-                    },
-                    200: function (){
-                       // $j('#name').val("");
-                       // $j('#email').val("");
-                       // $j('#feed').val("");
-                        //Success Message
-                    }
-            }        
-        });
-
-
-
-    console.log("posted");
-    //}
-    //else {
-        //Error message
-    //}
-}
-
 $("#post-rec").click(function(evt) {
-  fabmo._download("test this stuff", 'fabmo_config_backup.fmc','text/json');
-  //fabmo.navigate("https://docs.google.com/spreadsheets/d/1LuCzhduFyZ9_erDGJ4pctm_kLWXFcw602IlPcqWchow/edit?usp=sharing",{target : '_blank'});
-
-  postToGoogle();
-
+  fabmo._download("test this stuff", 'prod_Logfabmo.txt','text/json');
+  fabmo.navigate("https://docs.google.com/spreadsheets/d/1LuCzhduFyZ9_erDGJ4pctm_kLWXFcw602IlPcqWchow/edit?usp=sharing",{target : '_blank'});
+  console.log("posted");
   //fabmo._download(JSON.stringify(conf), 'fabmo_config_backup.fmc','text/json');
   //postToGoogle();
 });
