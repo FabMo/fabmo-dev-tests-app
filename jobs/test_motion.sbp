@@ -1,0 +1,44 @@
+' Testing Motion for Production App
+
+' LOGIC: Evaluate Alignment and General Performance by:
+'  - Increase speed and ramp aggression with repeated full motion and short motion tests on each axis
+'     in order to produce stalls. Hopefully, stalling happens above the target max speeds.
+
+
+
+
+' About to begin testing. Will Zero the tool first. OK?
+PAUSE
+C#, 3
+
+' Motion at 3ips. OK?
+VR, 50,50
+MS, 3,3
+
+MX, 1
+MX, 0
+MX, 6
+MX, 5
+MX, 6
+MX, 0
+MX, 6
+MX, 0
+
+MY, 1
+MY, 0
+MY, 8
+MY, 7
+MY, 8
+MY, 0
+MY, 8
+MY, 0
+
+MX, 1
+MX, 0
+MX, 6
+MX, 5
+MX, 6
+MX, 0
+MX, 6
+MX, 0
+
