@@ -5,6 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Production CHECK</title>
+    <style>
+        iframe,tab-pane {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+    </style>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/pure-min.css" rel="stylesheet">
@@ -29,35 +38,35 @@
       <!-- Nav tabs -->
       <div class="tabs-container">
         <ul class="nav nav-tabs" role="tablist">
-          <li class="active"><a href="#tab-first" role="tab" data-toggle="tab"><strong>First Tests</strong></a></li>
-          <li><a id="cuttest-tab-lin" href="#tab-cuttest" role="tab" data-toggle="tab"><strong>Test Cut</strong></a></li>
-          <li><a id="serial-tab-link" href="#tab-serialnum" role="tab" data-toggle="tab"><strong>Finish / Get-Print SerialNum</strong></a></li>
+          <li class="active"><a href="#tab-first" role="tab" data-toggle="tab"><strong>Updates</strong></a></li>
+          <li><a id="tests-tab-link" href="#tab-gentest" role="tab" data-toggle="tab"><strong>General Tests</strong></a></li>
+          <li><a id="zset-tab-link" href="#tab-zset" role="tab" data-toggle="tab"><strong>Cutter/Z-Set</strong></a></li>
+          <li><a id="cuttest-tab-link" href="#tab-cuttest" role="tab" data-toggle="tab"><strong>Test Cut</strong></a></li>
+          <li><a id="serial-tab-link" href="#tab-serialnum" role="tab" data-toggle="tab"><strong>Finish/Get-Print-SerialNum</strong></a></li>
         </ul>
       </div>
 
       <div class="tab-content">
         <!-- First Tests pane -->
         <div class="tab-pane active" id="tab-first">
-			<div class="jumbotron">
-				<p>[This App will lead you through setting up and testing a new Handibot prior to shipping.]</p>
-			  <h2>FIRST: Lets run some tests ...</h2>
-			</div>
+            <h2><strong>CURRENT UPDATES NEEDED:</strong></h2>
+            <hr width = "90%" noshade>
+    			<iframe style="height:1024px" src="http://docs.handibot.com/production"></iframe>
+        </div><!-- end First Pane -->
 
+        <!-- Update Notes Pane -->
+        <div class="tab-pane" id="tab-gentest">
+            <h2><strong>GENERAL TESTS (no cutter in yet!)</strong></h2>
 		    <!-- Test Homing -->
             <div>
-              <h4><strong>Running the homing routine is always a good start and a good test. You can't do it to often -- feel free to run with Macro #3 as well. Watch for binding and inconsistent return to starting location.</strong></h4>
+              <h4><strong>1. Running the homing routine is always a good start and a good test. You can't do it to often -- feel free to run with Macro #3 as well. Watch for binding and inconsistent return to starting location.</strong></h4>
               <h3><a class="btn btn-success btn-lg" id="call-c3">Set Your XYZ HOME LOCATION <br> Clear area around the tool first!</a> </h3>
             </div>
-		    <!-- Test Motion -->
-            <div>  
-              <h4><strong>We want to make sure all the axes are running correctly and there is no binding.</strong></h4>
-              <h3><a class="btn btn-success btn-lg" id="call-zup"> Start Motion TEST</a> </h3>
-              <p> </p>  
-			</div>
+            
+            <!-- Check Inputs -->
             <div>
-		      <!-- Check Inputs -->
               <hr width = "90%" noshade>
-              <h4><strong>Make Sure ALL Inputs are Working</strong></h4>
+              <h4><strong>2. Make Sure ALL Inputs are Working</strong></h4>
                 <p>Inputs show up in the <strong>DRO DISPLAY</strong> as shown below. There are <strong>3 Inputs to CHECK</strong>.</p>
 	            <p class='instr-photo'</p>
 	            <div class="pure-g">
@@ -81,16 +90,48 @@
 				        </div>
 					</div>
 				</div>
-
             </div>
-            <hr width = "90%" noshade>
-        </div><!-- end First Pane -->
 
-        <!-- Details Pane -->
+		    <!-- Test Motion -->
+            <div>  
+              <h4><strong>3. We want to make sure all the axes are running correctly and there is no binding.</strong></h4>
+              <h3><a class="btn btn-success btn-lg" id="call-zup"> Start Motion TEST</a> </h3>
+              <p> </p>  
+			</div>
+
+            <hr width = "90%" noshade>
+            <hr width = "90%" noshade>
+      
+        </div><!-- end Update Notes Pane -->
+
+        <!-- Cutter and Z-setting Pane -->
+        <div class="tab-pane" id="tab-zset">
+            <h2><strong>Put in Cutter and Set Z and Plate</strong></h2>
+            <div>
+                <h4><strong>Before running the test file, insert the V-bit and Zero it. Use our current technique to update the setting for the height of the plate.</strong></h4>
+                <p>This routine will automatically put the test file at the back of the sample board.</p>
+                <p></p>
+                <p><strong>Test Preparation:</strong></p>
+                <ul>
+                	<li>Switch the router to ON, and set speed 4 on the router dial.</li>
+                	<li>Dust ?</li>
+                	<li>Close the hood</li>
+                  <li>Now you're about to run the same test file the customers will cut in the front of the panel ...</li>
+                </ul> 
+              <h3><a class="btn btn-success btn-lg" id="run-test"> Run the "Test-Carve"</a></h3>
+              <hr width = "90%" noshade>
+              <p>&nbsp;</p>
+            </div>  
+            <hr width = "90%" noshade>
+            <hr width = "90%" noshade>
+      
+        </div><!-- end Cutter and Z-setting Pane -->
+
+        <!-- Test-Cut Pane -->
         <div class="tab-pane" id="tab-cuttest">
             <h2><strong>Now Ready to Do Test Cut</strong></h2>
             <div>
-                <p>Before running the test file, insert the V-bit and Zero it. Use our current technique to update the setting for the height of the plate.</p>
+                <h4><strong>Before running the test file, insert the V-bit and Zero it. Use our current technique to update the setting for the height of the plate.</strong></h4>
                 <p>This routine will automatically put the test file at the back of the sample board.</p>
                 <p></p>
                 <p><strong>Test Preparation:</strong></p>
@@ -111,12 +152,9 @@
               <p>&nbsp;</p>
             </div>  
             <hr width = "90%" noshade>
- 
-           
             <hr width = "90%" noshade>
       
-        </div><!-- end Details Pane -->
-
+        </div><!-- end Test-Cut Pane -->
 
         <!-- SerialNum Pane -->
         <div class="tab-pane" id="tab-serialnum">
