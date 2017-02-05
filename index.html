@@ -95,7 +95,7 @@
 		    <!-- Test Motion -->
             <div>  
               <h4><strong>3. We want to make sure all the axes are running correctly and there is no binding.</strong></h4>
-              <h3><a class="btn btn-success btn-lg" id="call-zup"> Start Motion TEST</a> </h3>
+              <h3><a class="btn btn-success btn-lg" id="run-movetest"> Start Motion TEST</a> </h3>
               <p> </p>  
 			</div>
 
@@ -106,20 +106,15 @@
 
         <!-- Cutter and Z-setting Pane -->
         <div class="tab-pane" id="tab-zset">
-            <h2><strong>Put in Cutter and Set Z and Plate</strong></h2>
+            <h2><strong>Put in Cutter, Set Z, and Adjust Plate</strong></h2>
             <div>
-                <h4><strong>Before running the test file, insert the V-bit and Zero it. Use our current technique to update the setting for the height of the plate.</strong></h4>
-                <p>This routine will automatically put the test file at the back of the sample board.</p>
+                <h4><strong>Now we're ready to insert the V-bit, Zero it, and adjust the Zero plate offset measurement.</strong></h4>
+                <p>First Put in the V-bit cutter.</p>
                 <p></p>
-                <p><strong>Test Preparation:</strong></p>
-                <ul>
-                	<li>Switch the router to ON, and set speed 4 on the router dial.</li>
-                	<li>Dust ?</li>
-                	<li>Close the hood</li>
-                  <li>Now you're about to run the same test file the customers will cut in the front of the panel ...</li>
-                </ul> 
-              <h3><a class="btn btn-success btn-lg" id="run-test"> Run the "Test-Carve"</a></h3>
-              <hr width = "90%" noshade>
+                <p>Then we'll do the Z-Zero routine, just click button here.</p>
+	              <h3><a class="btn btn-success btn-lg" id="call-C2"> Run the Routine to Set the Cutter Zero (Macro#2) </a></h3>
+                <p>Next we'll maske sure the plate height is correct.</p>
+    	          <h3><a class="btn btn-success btn-lg" id="call-reset-z-off"> Run the Plate-Adjustment Routine (Macro#77) </a></h3>
               <p>&nbsp;</p>
             </div>  
             <hr width = "90%" noshade>
@@ -131,16 +126,15 @@
         <div class="tab-pane" id="tab-cuttest">
             <h2><strong>Now Ready to Do Test Cut</strong></h2>
             <div>
-                <h4><strong>Before running the test file, insert the V-bit and Zero it. Use our current technique to update the setting for the height of the plate.</strong></h4>
-                <p>This routine will automatically put the test file at the back of the sample board.</p>
-                <p></p>
+                <h4><strong>This routine will automatically put the test file at the back of the sample board.</strong></h4>
                 <p><strong>Test Preparation:</strong></p>
                 <ul>
                 	<li>Switch the router to ON, and set speed 4 on the router dial.</li>
                 	<li>Dust ?</li>
                 	<li>Close the hood</li>
-                  <li>Now you're about to run the same test file the customers will cut in the front of the panel ...</li>
+                    <li>Now you're about to run the same test file the customers will cut in the front of the panel ...</li>
                 </ul> 
+                <p>&nbsp;</p>
 	            <p class='instr-photo'> </p>
 	            <div class="pure-g">
 	              <div class="pure-u-1-3  image-container">
@@ -148,7 +142,6 @@
 	              </div>
 	            </div>  
               <h3><a class="btn btn-success btn-lg" id="run-test"> Run the "Test-Carve"</a></h3>
-              <hr width = "90%" noshade>
               <p>&nbsp;</p>
             </div>  
             <hr width = "90%" noshade>
@@ -158,7 +151,9 @@
 
         <!-- SerialNum Pane -->
         <div class="tab-pane" id="tab-serialnum">
-          <h3><a id="get-serialnum"></a>[Select and Print Labels with SnagIt]</h3>
+          <h2><a id="get-serialnum"><strong></a>Select and Print Labels [use SnagIt]</strong></h2>
+                <h4><strong>To Print Label: Start SnagIt and capture label area, then send to printer (Ctl-P).</strong></h4>
+                <p></p>
           <hr width = "90%" noshade>
               <div class="pure-u-1  image-container" id="qrcodeCanvas">
                 <h2 id="demo"></h2>
@@ -166,14 +161,12 @@
               <p>This is your Handibot's serial number and temporary name. Select it in the Wifi manager of your PC or mobile device for AccessPoint link directly to your tool.</p>
               <p>Use the "FabMo Minder" from <strong>docs.handibot.com</strong> for identifying your Handibot after you have put it on a network.</p>
           <hr width = "90%" noshade>
-                <div class="pure-u-1-2  image-container">
-                    <img class='pure-img' src="img/green_button.png">
-                </div>
-          <hr width = "90%" noshade>
             <h3><a class="btn btn-danger btn-lg" id="post-rec"> Log Data / Open Spreadsheet</a> </h3>
           <hr width = "90%" noshade>
             <h3><a class="btn btn-danger btn-lg" id="call-deleteme"> FINISHED. DELETE APP !!!</a> </h3>
-          <hr width = "90%" noshade>
+            <p>&nbsp;</p>
+	        <hr width = "90%" noshade>
+	        <hr width = "90%" noshade>
 
         </div> <!-- END SerialNum Pane -->
       </div> <!-- tab content -->

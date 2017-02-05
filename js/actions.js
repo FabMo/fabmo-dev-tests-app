@@ -37,8 +37,8 @@ $("#call-DRO-hide").click(function(evt) {
 $("#run-test").click(function(evt) {
     DoJobFile('jobs/test_carve.sbp');
 });
-$("#call-movetest").click(function(evt) {
-    DoJobFile('jobs/move_test.sbp');
+$("#run-movetest").click(function(evt) {
+    DoJobFile('jobs/test_motion.sbp');
 });
 
 
