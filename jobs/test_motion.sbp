@@ -5,14 +5,11 @@
 '     in order to produce stalls. Hopefully, stalling happens above the target max speeds.
 
 
-' About to begin testing. Zeroing the tool first. OK?
-PAUSE
-C#, 3
-
-' Motion at 4ips. OK?
+'About to begin Testing! Motion at 4ips. OK?
 PAUSE
 VR, 50,50
 MS, 4,4
+$zero_plate_adder = .75  'Hard Reset to Default
 
 MX, 1
 MX, 0
@@ -34,9 +31,9 @@ MY, 0
 
 MZ, -.5
 MZ, 0
-MZ, -2
+MZ, -3
 MZ, -1.5
-MZ, -2
+MZ, -3
 MZ, 0
 MZ, -.5
 MZ, 0
@@ -66,9 +63,9 @@ MY, 0
 
 MZ, -.5
 MZ, 0
-MZ, -2
+MZ, -3
 MZ, -1.5
-MZ, -2
+MZ, -3
 MZ, 0
 MZ, -.5
 MZ, 0
@@ -98,9 +95,9 @@ MY, 0
 
 MZ, -.5
 MZ, 0
-MZ, -2
+MZ, -3
 MZ, -1.5
-MZ, -2
+MZ, -3
 MZ, 0
 MZ, -.5
 MZ, 0

@@ -1,9 +1,0 @@
-' Setting Up Z for Production App
-
-' LOGIC: Do the regular cutter Zero and then check and correct offset
-
-'Ready to Run Z-Zero Routine?
-PAUSE
-C#,2
-
-'OK now let's do the plate height adjust
