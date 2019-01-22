@@ -2,7 +2,7 @@
   "name": "FINAL CHECK !",
   "main": "./index.html",
   "icon": "icon.png",
-  "icon_color": "red",
+  "icon_color": "green",
   "version": "1.0.1",
   "author": "Ted Hall + Ryan Sturmer",
   "website": "http://www.handibot.com",
