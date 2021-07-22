@@ -1,5 +1,6 @@
 'Generic testing of looping that reports action in A axis and confirms in Y values
 ' *note: will move the Y axis a bit
+' **Try breaking this file in motion and in PAUSE
 
 ' ** MIGHT HAVE TO HIT ESC IF NO STOP BUTTON APPEARS
 &report = 0
