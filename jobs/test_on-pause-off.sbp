@@ -1,0 +1,9 @@
+'Check to see if pauses are disrupting switches
+
+PAUSE "Testing Output 3"
+SO, 3,1
+PAUSE "Should be ON ... "
+PAUSE 2
+SO, 3,0
+PAUSE "Should be OFF"
+END

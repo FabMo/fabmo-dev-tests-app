@@ -1,0 +1,64 @@
+'This files exercises some of the functions used in hoiming but does not requre an actual tool, motion, or prox switches
+
+'--- Adjust Standard Macro Variables to Current Tool Units if Needed ---
+&dist_mult = 1.0
+'straighten out unit issues ...
+IF %(25) == 1 THEN GOTO tool_MM   		                  ' Read UNIT of Tool; System Variable #25
+  tool_IN:
+    &ooch = 0.05                                          ' Set distance for slight target over-run in IN
+    $current_cutter_Zoffset := .25                        ' Initialize variables in IN for case tool cutter not yet zeroed
+	$current_cutter_Zoffset_Units := 0
+    IF $sb_varTableUNITS == "IN" THEN GOTO continue_with_variables
+	&dist_mult = 0.0393701                                ' Defined in MM: Multiplier to redefine distances from mm to inches 
+    GOTO continue_with_variables
+  tool_MM:
+    &ooch = 1.27                                          ' Set distance for slight target over-run
+    $current_cutter_Zoffset := 6.35                       ' Initialize variable in MM for case tool cutter not zeroed
+	$current_cutter_Zoffset_Units := 1
+    IF $sb_varTableUNITS == "MM" THEN GOTO continue_with_variables
+	&dist_mult = 25.4                                     ' Defined in IN: Multiplier to redefine distances from inches to mm 
+    GOTO continue_with_variables
+'----------------------------------------------------------------
+
+continue_with_variables:
+&testVar = 1    ' Manipulate to exercise loops
+&report = 0
+&backOff_dist = -.2
+
+' --- Main Program Sequence ---
+
+ZZ
+GOSUB backOffProx_if_needed
+GOSUB initial_home_z
+PAUSE .5
+MA, &report
+END
+
+' --- Subroutines ---
+initial_home_z:
+	PAUSE "Ready for home"
+	&report = &report + 2
+    PZ, .5, ($sb_searchSpeed_Z * 1), 6 ' use dummy switch values if no prox switch to test 
+    'PZ, ($sb_searchDist_Z * 1), ($sb_searchSpeed_Z * 1), $sb_proxNum_Z   ' PZ "probes" for a switch or contact in the Z axis
+    ZZ
+    MZ, -.5
+	RETURN
+
+backOffProx_if_needed:
+    '&testVar = %(55)
+    PAUSE "ready to test val - " + &testVar
+	&report = &report + 4
+    IF  &testVar == 1 THEN GOSUB backOffProx_z
+    RETURN
+
+backOffProx_z:
+	PAUSE "on prox"
+  	&report = &report + 8
+    MZ, &backOff_dist
+    '&testVar = %(55)
+    IF &testVar == 1 THEN GOTO no_clear
+    RETURN    
+
+no_clear:
+    MA, &report
+	FAIL "Proximity Switch Not Clear! (A switch is stuck on.)" ' Could not clear.

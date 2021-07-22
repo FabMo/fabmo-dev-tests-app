@@ -1,0 +1,11 @@
+' Check to see if the syntax errors here are reported
+
+PAUSE "This tests syntax error report"
+'&test_dist = 1   ' uncomment to remove undefined var; only tests if var not defined
+mx,1
+mx,0
+mx,&test_dist
+mx,0
+'mx, -1 * -1      ' comment out to remove bracket error
+mx, (-1 * -1)    
+mx,0

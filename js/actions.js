@@ -43,6 +43,15 @@ $("#run-movetest").click(function(evt) {
 $("#run-shortmovetest").click(function(evt) {
     DoJobFile('jobs/test_shortmotion.sbp');
 });
+$("#run-sblogo").click(function(evt) {
+    DoJobFile('jobs/sample_shopbot_logo.sbp');
+});
+$("#run-ck-syn-error").click(function(evt) {
+    DoJobFile('jobs/test_ck-syn-error.sbp');
+});
+$("#run-on-pause-off").click(function(evt) {
+    DoJobFile('jobs/test_on-pause-off.sbp');
+});
 $("#nav-showdro").click(function(evt) {
   fabmo.showDRO();
 });
