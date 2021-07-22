@@ -52,6 +52,12 @@ $("#run-ck-syn-error").click(function(evt) {
 $("#run-on-pause-off").click(function(evt) {
     DoJobFile('jobs/test_on-pause-off.sbp');
 });
+$("#run-sim-homing").click(function(evt) {
+    DoJobFile('jobs/test_sim-homing.sbp');
+});
+$("#run-subs-loops").click(function(evt) {
+    DoJobFile('jobs/test_subs-loops.sbp');
+});
 $("#nav-showdro").click(function(evt) {
   fabmo.showDRO();
 });

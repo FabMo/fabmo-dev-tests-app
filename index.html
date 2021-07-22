@@ -101,21 +101,23 @@
         <div class="tab-pane active" id="tab-opensbp">
             <h2><strong>Focusing on the OpenSBP runtime and OpenSBP processing</strong></h2>
             <div>
-                <h4><strong>Frist let's just make sure we can run the logo file.</strong></h4>
-                <p>If connected to a real tool, make sure area is clear. Air-cut, no need to run router.</p>
+                <!--
+                <h4><strong>First let's just make sure we can run the logo file.</strong></h4>
+                -->
+                <p>Test can be run on simulator without real tool. But, if connected to a real tool, make sure area is clear.
+                     Just air-cut, no need to run router. Make sure A-axis is enabled for reporting; units 1000, rotary enabled.</p>
+                <p>Button opens test in Job Manager; first open in editor and run from there; then run as file.</p>
+                <p>See notes on specific tests in file headers.</p>     
                 <h3><a class="btn btn-success btn-lg" id="run-sblogo"> Run the ShopBot Logo File </a></h3>
                 <p></p>
                 <h3><a class="btn btn-success btn-lg" id="run-ck-syn-error"> Are we reporting Syntax Errors ? </a></h3>
                 <p></p>
                 <h3><a class="btn btn-success btn-lg" id="run-on-pause-off"> Check PAUSES between Switch Events </a></h3>
                 <p></p>
-                <p>If connected to a real tool, make sure area is clear. Air-cut, no need to run router.</p>
-                <h3><a class="btn btn-success btn-lg" id="run-sblogo"> Run the ShopBot Logo File </a></h3>
+                <h3><a class="btn btn-success btn-lg" id="run-sim-homing"> Run the ShopBot Logo File </a></h3>
                 <p></p>
-                <p>Then we'll do the Z-Zero routine, just click button here.</p>
-	              <h3><a class="btn btn-success btn-lg" id="call-c2"> Run the Routine to Set the Cutter Zero (Macro#2) </a></h3>
-                <p>Next we'll maske sure the plate height is correct.</p>
-    	          <h3><a class="btn btn-success btn-lg" id="call-reset-z-off"> Run the Plate-Adjustment Routine (Macro#77) </a></h3>
+                <h3><a class="btn btn-success btn-lg" id="run-subs-loops"> Run the ShopBot Logo File </a></h3>
+                <p></p>
               <p>&nbsp;</p>
             </div>  
             <hr width = "90%" noshade>
