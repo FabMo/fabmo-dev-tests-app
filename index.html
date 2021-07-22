@@ -38,17 +38,18 @@
       <!-- Nav tabs -->
       <div class="tabs-container">
         <ul class="nav nav-tabs" role="tablist">
-          <li class="active"><a href="#tab-gentest" role="tab" data-toggle="tab"><strong>to CHECK</strong></a></li>
-          <li><a id="zset-tab-link" href="#tab-zset" role="tab" data-toggle="tab"><strong>CUTTER/Z</strong></a></li>
-          <li><a id="cuttest-tab-link" href="#tab-cuttest" role="tab" data-toggle="tab"><strong>TEST CUT</strong></a></li>
+          <li><a id="gen-tab-link" href="#tab-gentest" role="tab" data-toggle="tab"><strong>to CHECK</strong></a></li>
+          <li class="active"><a id="opensbp-tab-link" href="#tab-opensbp" role="tab" data-toggle="tab"><strong>OPENSBP</strong></a></li>
+          <li><a id="motiontest-tab-link" href="#tab-motion" role="tab" data-toggle="tab"><strong>MOTION</strong></a></li>
+          <li><a id="cuttest-tab-link" href="#tab-cuttest" role="tab" data-toggle="tab"><strong>ACTUAL CUTTING</strong></a></li>
           <li><a id="serial-tab-link" href="#tab-serialnum" role="tab" data-toggle="tab"><strong>FINISH/SerialNum</strong></a></li>
         </ul>
       </div>
 
       <div class="tab-content">
          <!-- Checklist Pane -->
-        <div class="tab-pane active" id="tab-gentest">
-            <h2><strong>GENERAL TESTS (no cutter in yet!)</strong></h2>
+        <div class="tab-pane" id="tab-gentest">
+            <h2><strong>GENERAL TESTS (basic functionality)</strong></h2>
 		    <!-- Test Homing -->
 		        <div class="container" style="margin-top:20px;">
 		          <div class="row">
@@ -96,8 +97,26 @@
 	            <hr width = "90%" noshade>
         </div><!-- end Checklist Pane -->
 
-        <!-- Cutter and Z-setting Pane -->
-        <div class="tab-pane" id="tab-zset">
+        <!-- OpenSBP Pane -->
+        <div class="tab-pane active" id="tab-opensbp">
+            <h2><strong>Focusing on the OpenSBP runtime and OpenSBP processing</strong></h2>
+            <div>
+                <h4><strong>Frist let's just make sure we can run the logo file.</strong></h4>
+                <p>If connected to a real tool, make sure area is clear. Air-cut, no need to run router.</p>
+                <h3><a class="btn btn-success btn-lg" id="run-shortmotion"> Run the ShopBot Logo File </a></h3>
+                <p></p>
+                <p>Then we'll do the Z-Zero routine, just click button here.</p>
+	              <h3><a class="btn btn-success btn-lg" id="call-c2"> Run the Routine to Set the Cutter Zero (Macro#2) </a></h3>
+                <p>Next we'll maske sure the plate height is correct.</p>
+    	          <h3><a class="btn btn-success btn-lg" id="call-reset-z-off"> Run the Plate-Adjustment Routine (Macro#77) </a></h3>
+              <p>&nbsp;</p>
+            </div>  
+            <hr width = "90%" noshade>
+            <hr width = "90%" noshade>
+        </div><!-- end OpenSBP Pane -->
+
+        <!-- Motion Pane -->
+        <div class="tab-pane" id="tab-motion">
             <h2><strong>Put in Cutter, Set Z, and Adjust Plate</strong></h2>
             <div>
                 <h4><strong>Now we're ready to insert the V-bit, Zero it, and adjust the Zero plate offset measurement.</strong></h4>
@@ -111,8 +130,7 @@
             </div>  
             <hr width = "90%" noshade>
             <hr width = "90%" noshade>
-      
-        </div><!-- end Cutter and Z-setting Pane -->
+        </div><!-- end Motion Pane -->
 
         <!-- Test-Cut Pane -->
         <div class="tab-pane" id="tab-cuttest">

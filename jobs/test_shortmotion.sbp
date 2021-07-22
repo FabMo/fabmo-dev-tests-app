@@ -1,0 +1,4 @@
+' Testing Motion for Production App
+mx,1
+mx,0
+PAUSE "Testing Complete"

@@ -40,6 +40,9 @@ $("#run-test").click(function(evt) {
 $("#run-movetest").click(function(evt) {
     DoJobFile('jobs/test_motion.sbp');
 });
+$("#run-shortmovetest").click(function(evt) {
+    DoJobFile('jobs/test_shortmotion.sbp');
+});
 $("#nav-showdro").click(function(evt) {
   fabmo.showDRO();
 });
