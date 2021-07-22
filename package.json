@@ -1,13 +1,13 @@
 {
-  "name": "FINAL CHECK !",
+  "name": "DEV CHECKS !",
   "main": "./index.html",
   "icon": "icon.png",
-  "icon_color": "green",
-  "version": "1.0.2",
-  "author": "Ted Hall + Ryan Sturmer",
-  "website": "http://www.handibot.com",
-  "description": "Factory tests ...",
-  "id": "fabmo-productionapp",
+  "icon_color": "yellow",
+  "version": "0.0.3",
+  "author": "Ted Hall",
+  "website": "http://www.shopbottools.com",
+  "description": "Development tests ...",
+  "id": "fabmo-dev-tests-app",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-zip": "^0.17.1"
