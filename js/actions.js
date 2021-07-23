@@ -85,6 +85,9 @@ $("#dash-launch-doc").click(function(evt) {
   fabmo.navigate('http://docs.handibot.com/doc-output/Handibot%202%20MANUAL%20Safe%20Use%20Source_v001.pdf', {target : '_blank'});
 });
 
+$("#dash-launch-rep").click(function(evt) {
+    fabmo.navigate('https://docs.google.com/document/d/1CHENZPwwjMrkgTUpJA0-1NUTtqeLM8AsvqM0nvUcP7g/edit?usp=sharing', {target : '_blank'});
+  });
 
 
 // Working with Label Tab

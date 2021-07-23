@@ -3,7 +3,7 @@
   "main": "./index.html",
   "icon": "icon.png",
   "icon_color": "yellow",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Ted Hall",
   "website": "http://www.shopbottools.com",
   "description": "Development tests ...",
