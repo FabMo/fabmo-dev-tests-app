@@ -1,0 +1,6 @@
+' Example use of an inserted keypad to allow user to set up new cutter
+
+&Tool = 23
+MX,1
+SK, "Change to tool " + &Tool + " and position above plate(close keypad to continue)"
+MX,0

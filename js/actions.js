@@ -58,6 +58,10 @@ $("#run-sim-homing").click(function(evt) {
 $("#run-subs-loops").click(function(evt) {
     DoJobFile('jobs/test_subs-loops.sbp');
 });
+$("#run-inserted-sk").click(function(evt) {
+    DoJobFile('jobs/test_inserted-sk.sbp');
+});
+
 $("#nav-showdro").click(function(evt) {
   fabmo.showDRO();
 });
