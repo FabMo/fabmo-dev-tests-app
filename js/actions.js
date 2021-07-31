@@ -59,7 +59,7 @@ $("#run-subs-loops").click(function(evt) {
     DoJobFile('jobs/test_subs-loops.sbp');
 });
 $("#run-inserted-sk").click(function(evt) {
-    DoJobFile('jobs/test_inserted-sk.sbp');
+    DoJobFile('jobs/test_insert-sk.sbp');
 });
 
 $("#nav-showdro").click(function(evt) {
