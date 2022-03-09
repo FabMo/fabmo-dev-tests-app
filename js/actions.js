@@ -44,7 +44,8 @@ $("#run-shortmovetest").click(function(evt) {
     DoJobFile('jobs/test_shortmotion.sbp');
 });
 $("#run-sblogo").click(function(evt) {
-    DoJobFile('jobs/sample_shopbot_logo.sbp');
+//    load_SBPfile_run('jobs/sample_shopbot_logo.sbp');
+    DoJobFileStay('jobs/sample_shopbot_logo.sbp');    // Note STAY version
 });
 $("#run-ck-syn-error").click(function(evt) {
     DoJobFile('jobs/test_ck-syn-error.sbp');
@@ -52,9 +53,15 @@ $("#run-ck-syn-error").click(function(evt) {
 $("#run-on-pause-off").click(function(evt) {
     DoJobFile('jobs/test_on-pause-off.sbp');
 });
+
+
 $("#run-sim-homing").click(function(evt) {
-    DoJobFile('jobs/test_sim-homing.sbp');
+    fabmo.runMacro(2);
+//    fabmo.runSBP('C#,2');                           // Now just running current C2 for simulation
 });
+
+
+
 $("#run-subs-loops").click(function(evt) {
     DoJobFile('jobs/test_subs-loops.sbp');
 });
