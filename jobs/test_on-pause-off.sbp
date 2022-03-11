@@ -1,9 +1,10 @@
 'Check to see if pauses are disrupting switches
 
-PAUSE "Testing Output 3"
-SO, 3,1
-PAUSE "Should be ON ... "
+&Output_to_test = 3
+PAUSE "Testing Output " + &Output_to_test
+SO, &Output_to_test,1
+PAUSE "OUTPUT #" + &Output_to_test + " Should be ON ... "
 PAUSE 2
-SO, 3,0
-PAUSE "Should be OFF"
+SO, &Output_to_test,0
+PAUSE "OUTPUT #" + &Output_to_test + " Should be OFF ... "
 END

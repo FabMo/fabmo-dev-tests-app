@@ -53,20 +53,18 @@ $("#run-ck-syn-error").click(function(evt) {
 $("#run-on-pause-off").click(function(evt) {
     DoJobFile('jobs/test_on-pause-off.sbp');
 });
-
-
 $("#run-sim-homing").click(function(evt) {
     fabmo.runMacro(2);
 //    fabmo.runSBP('C#,2');                           // Now just running current C2 for simulation
 });
-
-
-
 $("#run-subs-loops").click(function(evt) {
     DoJobFile('jobs/test_subs-loops.sbp');
 });
 $("#run-inserted-sk").click(function(evt) {
     DoJobFile('jobs/test_insert-sk.sbp');
+});
+$("#run-with-macro9").click(function(evt) {
+    DoJobFile('jobs/test_gator_cut.sbp');
 });
 
 $("#nav-showdro").click(function(evt) {
